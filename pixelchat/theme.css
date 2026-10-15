@@ -1,0 +1,224 @@
+/* Cortex-inspired look for PixelChat: centered column, violet accent palette,
+   a "Hello" greeting / glowing orb empty state, borderless assistant messages
+   with a gradient avatar dot, pill-shaped user bubbles, a rounded composer
+   bar, clickable example-prompt cards, and a collapsed Settings panel. */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --pc-bg: #ffffff;
+    --pc-surface: #f5f3ff;
+    --pc-user-bubble: #ede9fe;
+    --pc-text: #111827;
+    --pc-muted: #6b7280;
+    --pc-border: #e5e7eb;
+    --pc-accent-1: #8b5cf6;
+    --pc-accent-2: #7c3aed;
+}
+
+html,
+body {
+    background: var(--pc-bg) !important;
+}
+
+.gradio-container {
+    background: var(--pc-bg) !important;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    color: var(--pc-text) !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+}
+
+.gradio-container main.contain {
+    max-width: 900px !important;
+    margin: 0 auto !important;
+    padding: 0 24px !important;
+}
+
+#pc-header {
+    text-align: center;
+    padding: 28px 0 0 0;
+}
+#pc-header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    display: inline-block;
+    color: var(--pc-text);
+    margin: 0;
+}
+#pc-header p {
+    color: var(--pc-muted);
+    font-size: 14px;
+    margin: 4px 0 0 0;
+}
+
+#pc-status {
+    display: none !important;
+}
+
+/* ---- Empty-state hero: glowing orb + greeting ---- */
+#hero {
+    text-align: center;
+    padding: 36px 0 12px 0;
+}
+#hero .hero-orb {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background-image: radial-gradient(circle at 32% 30%, #ffffff, #c9b6fb 45%, var(--pc-accent-1) 85%);
+    box-shadow: 0 0 70px 12px rgba(139, 92, 246, 0.35);
+}
+#hero .hero-greeting {
+    display: block;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--pc-accent-1);
+}
+#hero .hero-subtitle {
+    margin: 4px 0 0 0;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--pc-text);
+}
+
+/* ---- Chatbot ---- */
+#chatbot {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+#chatbot .bubble-wrap {
+    background: transparent !important;
+}
+
+#chatbot .message,
+#chatbot .message-content,
+#chatbot .message-content p,
+#chatbot .message-content span,
+#chatbot .prose {
+    color: var(--pc-text) !important;
+}
+
+#chatbot .user-row {
+    justify-content: flex-end !important;
+}
+#chatbot .user.message {
+    background: var(--pc-user-bubble) !important;
+    border-radius: 20px !important;
+    border: none !important;
+    padding: 10px 18px !important;
+    max-width: 75%;
+}
+
+#chatbot .bot-row .message,
+#chatbot .bot.message {
+    background: transparent !important;
+    border: none !important;
+    padding: 4px 0 !important;
+}
+#chatbot .bot-row .flex-wrap.role {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+}
+#chatbot .bot-row .flex-wrap.role::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin: 4px 10px 0 0;
+    background-image: linear-gradient(135deg, var(--pc-accent-1), var(--pc-accent-2));
+}
+
+#chatbot .message-content img {
+    border-radius: 16px;
+}
+
+/* ---- Composer ---- */
+#composer-row {
+    background: var(--pc-surface) !important;
+    border: 1px solid var(--pc-border) !important;
+    border-radius: 28px !important;
+    padding: 4px 4px 4px 20px !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+#composer-row textarea,
+#composer-row .block,
+#composer-row .input-container {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: var(--pc-text) !important;
+}
+#composer-row textarea {
+    font-size: 15px !important;
+}
+
+#send-btn {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    border: none !important;
+    color: #ffffff !important;
+    font-size: 18px !important;
+    background-image: linear-gradient(135deg, var(--pc-accent-1), var(--pc-accent-2)) !important;
+}
+
+/* ---- Example prompt cards ---- */
+#examples-row {
+    gap: 12px !important;
+    margin-top: 8px;
+}
+#examples-row button {
+    background: #ffffff !important;
+    border: 1px solid var(--pc-border) !important;
+    border-radius: 16px !important;
+    padding: 14px 16px !important;
+    text-align: left !important;
+    white-space: pre-line !important;
+    line-height: 1.35 !important;
+    font-size: 13px !important;
+    color: var(--pc-text) !important;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04) !important;
+}
+#examples-row button:hover {
+    border-color: var(--pc-accent-1) !important;
+    background: var(--pc-surface) !important;
+}
+
+/* ---- Settings accordion ---- */
+#options-panel,
+#options-panel .label-wrap,
+#options-panel span {
+    background: var(--pc-bg) !important;
+    color: var(--pc-text) !important;
+    border-radius: 16px !important;
+    border-color: var(--pc-border) !important;
+}
+#options-panel .block,
+#options-panel .form {
+    background: transparent !important;
+}
+#options-panel button {
+    background: #ffffff !important;
+    border: 1px solid var(--pc-border) !important;
+    color: var(--pc-text) !important;
+}
+#options-panel button:hover {
+    border-color: var(--pc-accent-1) !important;
+    background: var(--pc-surface) !important;
+}
+#options-panel input,
+#options-panel textarea {
+    background: #ffffff !important;
+    color: var(--pc-text) !important;
+    border: 1px solid var(--pc-border) !important;
+}

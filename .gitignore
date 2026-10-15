@@ -1,0 +1,14 @@
+venv/
+outputs/
+data/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Hugging Face cache (in case it lands in-repo)
+.cache/
+huggingface/
+*.safetensors
+*.bin
+
+.env
